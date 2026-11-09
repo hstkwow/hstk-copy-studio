@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#173f35"><meta name="description" content="HSTK 灵感文案：基于大语言模型的电商营销文案生成系统。为商品生成多平台营销文案，支持多版本、交互修改与历史管理。">
+  <title>灵感文案 · HSTK 电商创作工作台</title><link rel="icon" href="./assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#studio"><span class="brand-symbol">✦</span><span>灵感文案<small>HSTK COPY STUDIO</small></span></a>
+    <div class="nav-label">创作空间</div>
+    <nav aria-label="主导航">
+      <button class="nav-item active" data-view="studio"><span>✧</span>文案工作台<span class="nav-dot"></span></button>
+      <button class="nav-item" data-view="history"><span>◷</span>创作记录<span class="count" id="history-count">0</span></button>
+      <button class="nav-item" data-view="favorites"><span>♡</span>我的收藏</button>
+      <button class="nav-item" data-view="guide"><span>▤</span>使用指南</button>
+    </nav>
+    <div class="sidebar-bottom"><div class="mini-card"><span class="mini-spark">✦</span><strong>把好商品，写成好故事。</strong><p>让每一个卖点<br>都找到打动人心的表达。</p></div><button class="nav-item settings-trigger"><span>⚙</span>模型设置<span class="connection-dot"></span></button><div class="team"><div class="avatar">H</div><div><strong>HSTK 创作小组</strong><small>孙涛 · 刘一行</small></div><span class="team-badge">课程设计</span></div></div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar"><div class="breadcrumb">创作空间 <span>/</span> <strong id="page-label">文案工作台</strong></div><div class="top-actions"><span class="model-badge" id="mode-badge"><i></i>演示模式</span><button class="button small settings-trigger">连接 DeepSeek <span>↗</span></button></div></header>
+    <main>
+      <section id="studio-view" class="view">
+        <section class="hero"><div><div class="eyebrow"><span></span> YOUR NEXT GREAT COPY STARTS HERE</div><h1>好商品，<span>值得好文案。</span></h1><p>从商品卖点到心动表达，让 AI 为你的下一次营销打开灵感。</p><div class="hero-tags"><span>✧ 多平台适配</span><span>◈ 多版本创作</span><span>↗ 一句话改写</span></div></div><div class="hero-art" aria-hidden="true"><div class="orbit"></div><div class="floating-tag tag-one">灵感 +1 ✦</div><div class="product-scene"><div class="scene-star">✳</div><div class="product-bottle"><div class="bottle-cap"></div><div class="bottle-label"><span>EVERYDAY</span><b>好物<br>有话说</b><small>MADE FOR YOU</small></div></div><div class="scene-pedestal"></div><div class="scene-circle"></div></div><div class="floating-tag tag-two">好文案，让好物发光 ↗</div></div></section>
+        <div class="workspace-heading"><div><h2>开始一次新创作 <span>CREATE SOMETHING GOOD</span></h2><p>告诉我们你的商品，剩下的交给灵感。</p></div><button class="text-button" id="load-sample">↻ 填入示例商品</button></div>
+        <div class="workspace">
+          <section class="panel brief-panel"><div class="panel-title"><span class="step">01</span><h3>描述你的商品</h3><span class="muted">PRODUCT BRIEF</span></div>
+            <form id="brief-form">
+              <label for="product">商品名称 <em>*</em></label><input id="product" name="product" maxlength="100" required placeholder="例如：轻行随身保温杯">
+              <div class="form-row"><div><label for="category">商品品类</label><select id="category" name="category"><option>生活日用</option><option>数码家电</option><option>美妆个护</option><option>服饰鞋包</option><option>食品饮料</option><option>运动户外</option><option>其他品类</option></select></div><div><label for="price">商品价格</label><div class="price-input"><span>¥</span><input id="price" name="price" inputmode="decimal" maxlength="20" placeholder="如 129"></div></div></div>
+              <label for="features">核心卖点 <em>*</em><span class="label-hint">越具体，文案越出彩</span></label><textarea id="features" name="features" required maxlength="1500" rows="4" placeholder="例如：350ml 轻巧容量；316 不锈钢内胆；一键开盖；适合通勤携带。每行写一个卖点。"></textarea>
+              <label for="audience">目标人群</label><input id="audience" name="audience" maxlength="150" placeholder="例如：注重生活品质的都市通勤人群">
+              <label>发布平台</label><div class="platform-options" role="group" aria-label="发布平台"><button type="button" class="choice selected" data-platform="小红书"><span class="platform-icon red">小红书</span>小红书</button><button type="button" class="choice" data-platform="淘宝"><span class="platform-icon orange">淘</span>淘宝</button><button type="button" class="choice" data-platform="抖音"><span class="platform-icon black">♪</span>抖音</button><button type="button" class="choice" data-platform="微信朋友圈"><span class="platform-icon green">◉</span>朋友圈</button></div>
+              <div class="form-row"><div><label for="type">文案类型</label><select id="type" name="type"><option>种草推广文案</option><option>商品标题</option><option>商品详情介绍</option><option>短视频带货口播</option></select></div><div><label for="tone">表达风格</label><select id="tone" name="tone"><option>自然种草</option><option>简洁实用</option><option>专业可信</option><option>活泼有趣</option></select></div></div>
+              <div class="form-row"><div><label for="length">篇幅长度</label><select id="length" name="length"><option value="short">短文 · 约 100 字</option><option value="medium" selected>标准 · 约 200 字</option><option value="long">长文 · 约 400 字</option></select></div><div><label for="versions">生成版本</label><select id="versions" name="versions"><option value="1">1 个版本</option><option value="2" selected>2 个版本</option><option value="3">3 个版本</option></select></div></div>
+              <label for="extra">补充要求 <span class="optional">选填</span></label><input id="extra" name="extra" maxlength="500" placeholder="例如：不要夸张用词，结尾加一个互动提问">
+              <button class="button primary generate-button" id="generate" type="submit"><span>✦</span> 生成我的文案 <span>↗</span></button><button type="button" class="text-button cancel-button" id="cancel" hidden>停止生成</button><p class="form-footnote" id="form-note">当前为演示模式 · 连接 DeepSeek 后开启真实 AI 创作</p>
+            </form>
+          </section>
+          <section class="results-panel"><div class="panel-title"><span class="step">02</span><h3>灵感在这里发生</h3><span class="result-count" id="result-count">等待创作</span></div><div class="result-toolbar"><div class="output-meta" id="output-meta">每一版表达，都有自己的闪光点。</div><button class="text-button" id="export" disabled>↓ 导出文案</button></div><div id="status" role="status" aria-live="polite"></div><div id="results"><div class="empty-state"><div class="empty-illustration"><span>✦</span><div class="paper"><i></i><i></i><i></i><i></i><b>✧</b></div><span>✧</span></div><h3>下一句心动文案，等你开启</h3><p>填写左侧商品信息，点击生成<br>让每个卖点，都变成想下单的理由。</p><div class="empty-chips"><span>商品标题</span><span>种草笔记</span><span>带货口播</span></div><button class="button" id="try-sample">用示例体验一下 ↗</button></div></div><div class="result-note"><span>✧</span><p>好文案源于真实卖点。发布前请核对商品参数、价格及宣传表述。</p></div></section>
+        </div>
+      </section>
+      <section id="history-view" class="view" hidden><div class="section-heading"><div><div class="eyebrow">YOUR CREATIVE JOURNEY</div><h1>每一次灵感，都有迹可循。</h1><p>创作记录仅保存在当前浏览器，可随时继续编辑。</p></div><button class="button" id="clear-history">清空记录</button></div><div class="history-tools"><input id="history-search" placeholder="搜索商品名称或文案内容" aria-label="搜索创作记录"><span id="history-summary"></span></div><div id="history-list" class="history-list"></div></section>
+      <section id="favorites-view" class="view" hidden><div class="section-heading"><div><div class="eyebrow">WORDS WORTH KEEPING</div><h1>收藏那些，恰到好处的表达。</h1><p>在文案卡片上点击收藏，把喜欢的版本留在这里。</p></div></div><div id="favorites-list" class="history-list"></div></section>
+      <section id="guide-view" class="view" hidden><div class="section-heading"><div><div class="eyebrow">A LITTLE GUIDE, A LOT OF IDEAS</div><h1>从商品信息，到营销表达。</h1><p>基于大语言模型的电商营销文案生成系统设计与实现</p></div></div><div class="guide-grid"><article class="panel guide-card"><span class="step">01</span><h2>写清楚真实卖点</h2><p>填写商品名称、品类、价格和目标人群。用具体参数替代“很好用”：比如容量、材质、尺寸和适用场景。</p></article><article class="panel guide-card"><span class="step">02</span><h2>选择适合的表达</h2><p>按发布平台、文案类型、风格和篇幅生成 1—3 个版本。不同平台采用相应的表达结构和语言习惯。</p></article><article class="panel guide-card"><span class="step">03</span><h2>比较、修改、再创作</h2><p>比较多版结果，可手动编辑，也可输入修改要求让 AI 继续改写。编辑内容会保存到本地创作记录。</p></article><article class="panel guide-card"><span class="step">04</span><h2>连接真实 AI</h2><p>打开模型设置，填写 DeepSeek API Token。密钥只保留在页面内存中，刷新后需重新填写；请求直接发送到 DeepSeek 官方接口。</p></article></div><div class="panel about-panel"><div><h2>HSTK · 灵感文案</h2><p>《生成式AI与大模型技术》课程设计</p><p>项目组员：孙涛、刘一行</p></div><div><strong>系统实现</strong><p>结构化商品输入 → 提示词构建 → DeepSeek 生成 → 多版本编辑 → 本地历史管理</p><p>GitHub Pages 提供静态网页托管。演示模式使用本地模板，明确标注演示内容，不调用大模型。</p></div></div></section>
+      <footer><span>HSTK COPY STUDIO <b>✦</b> 灵感有迹，表达有力。</span><span>生成式 AI 与大模型技术 · 课程设计</span></footer>
+    </main>
+  </div>
+  <dialog id="settings-dialog"><form id="settings-form"><div class="dialog-heading"><div><div class="eyebrow">MAKE THE CONNECTION</div><h2>连接你的创作引擎</h2></div><button type="button" class="icon-button" id="close-settings" aria-label="关闭设置">×</button></div><p class="dialog-intro">连接 DeepSeek，让真实 AI 为你的商品创作文案。</p><label for="mode">创作模式</label><select id="mode"><option value="demo">演示模式 · 本地模板体验</option><option value="live">DeepSeek · 真实 AI 生成</option></select><label for="api-key">DeepSeek API Token</label><input type="password" id="api-key" autocomplete="off" placeholder="填写你的 API Token" spellcheck="false"><p class="field-help">仅在当前页面内存中使用，不写入源码或浏览器存储，刷新即清除。</p><label for="model">模型名称</label><input id="model" value="deepseek-flash" maxlength="100" required><p class="field-help">默认 deepseek-flash；也可填写账户可用的模型名称。</p><div class="endpoint-note"><span>↗</span><div><strong>DeepSeek 官方接口</strong><small>https://api.deepseek.com/chat/completions</small></div></div><p id="settings-error" class="error-message" role="alert"></p><div class="dialog-actions"><button class="text-button" id="forget-key" type="button">清除密钥</button><button class="button primary" type="submit">保存设置 ↗</button></div></form></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./assets/app.js"></script>
+</body></html>
